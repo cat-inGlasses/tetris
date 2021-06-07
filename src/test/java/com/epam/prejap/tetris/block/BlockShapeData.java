@@ -7,8 +7,6 @@ import java.util.function.Supplier;
 
 /**
  * Class holds data of shapes that should be for each block class
- * <p>
- * Creation date: 18/06/2021
  *
  * @author Nikita Pochapynskyi
  */

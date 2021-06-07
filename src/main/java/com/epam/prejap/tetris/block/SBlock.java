@@ -1,8 +1,6 @@
 package com.epam.prejap.tetris.block;
 
 /**
- * Creation date: 18/06/2021
- *
  * @author Nikita Pochapynskyi
  */
 public class SBlock extends Block {
