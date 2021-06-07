@@ -22,5 +22,4 @@ public class BlockFeed {
     public Block nextBlock() {
         return blocks.get(rnd.nextInt(blocks.size())).get();
     }
-
 }
