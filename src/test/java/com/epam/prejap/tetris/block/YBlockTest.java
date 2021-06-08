@@ -2,19 +2,20 @@ package com.epam.prejap.tetris.block;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import static org.testng.Assert.*;
 
-@Test
+@Test(groups = {"blockShape"})
 public class YBlockTest {
     YBlock yBlock = new YBlock();
 
-    public void numberOfYBlockRowsEqualsThree(){
+    public void numberOfYBlockRowsEqualsThree() {
         int actual = yBlock.rows();
         int expected = 3;
         assertEquals(actual, expected, "Number of rows is incorrect. Expected: " + expected + ", actual: " + actual);
     }
 
-    public void numberOfYBlockColsEqualsThree(){
+    public void numberOfYBlockColsEqualsThree() {
         int actual = yBlock.cols();
         int expected = 3;
         assertEquals(actual, expected, "Number of cols is incorrect. Expected: " + expected + ", actual: " + actual);
