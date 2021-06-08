@@ -23,6 +23,7 @@
         </groups>
         <classes>
             <class name="com.epam.prejap.tetris.JARArchiveIT"/>
+            <class name="com.epam.prejap.tetris.block.YBlockTest"/>
         </classes>
     </test>
 </suite>
