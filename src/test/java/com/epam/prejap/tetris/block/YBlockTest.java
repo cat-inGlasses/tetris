@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 
-@Test(groups = {"blockShape"})
+@Test(groups = {"blockShapes", "blocks"})
 public class YBlockTest {
     YBlock yBlock = new YBlock();
 
