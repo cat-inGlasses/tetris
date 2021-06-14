@@ -2,6 +2,7 @@ package com.epam.prejap.tetris.block;
 
 /**
  * Represents Y block in BlockFeed.
+ *
  * @author Anna Silenko
 */
 final class YBlock extends Block {
