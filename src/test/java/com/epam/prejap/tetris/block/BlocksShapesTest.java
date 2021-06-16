@@ -9,119 +9,82 @@ import static org.testng.Assert.assertEquals;
 @Test(groups = "blockShapes")
 public class BlocksShapesTest {
 
-    private final Block block;
     private final int rowsExpected;
+    private final int rowsActual;
     private final int colsExpected;
-    private final Object[][] shape;
+    private final int colsActual;
+    private final String testedBlock;
+    private final Object[][] dotRepresentation;
 
+    public void numberOfEveryBlockShapeRowsAsExpected() {
+        assertEquals(rowsActual, rowsExpected, "Number of rows for " + testedBlock +
+                " is incorrect. Expected: " + rowsExpected + ", actual: " + rowsActual);
+    }
+
+    public void numberOfEveryBlockShapeColsAsExpected() {
+        assertEquals(colsActual, colsExpected, "Number of cols for " + testedBlock +
+                " is incorrect. Expected: " + colsExpected + ", actual: " + colsActual);
+    }
+
+    @Test(dataProvider = "dotsRepresentation")
+    public void dotAtReturnCorrectValue(int actual, int expected, String message) {
+        String msg = testedBlock + message;
+        assertEquals(actual, expected, msg);
+    }
+
+    @DataProvider
+    public Object[][] dotsRepresentation() {
+        return dotRepresentation;
+    }
 
     @Factory(dataProvider = "blocks")
-    public BlocksShapesTest(Block block, int rowsExpected, int colsExpected, Object[][] shape) {
-        this.block = block;
+    public BlocksShapesTest(Block block, String testedBlock, int rowsExpected, int colsExpected, Object[][] dotRepresentation) {
+        this.rowsActual = block.rows();
         this.rowsExpected = rowsExpected;
+        this.colsActual = block.cols();
         this.colsExpected = colsExpected;
-        this.shape = shape;
+        this.testedBlock = testedBlock;
+        this.dotRepresentation = dotRepresentation;
     }
 
     @DataProvider
     public static Object[][] blocks() {
+
+        OBlock oBlock = new OBlock();
+        var oBlockDotRepresentation = new Object[][]{
+                {oBlock.dotAt(0, 0), 1, " incorrect dotAt(0, 0)"},
+                {oBlock.dotAt(0, 1), 1, " incorrect dotAt(0, 1)"},
+                {oBlock.dotAt(1, 0), 1, " incorrect dotAt(1, 0)"},
+                {oBlock.dotAt(1, 1), 1, " incorrect dotAt(1, 1)"}
+        };
+
+        TBlock tBlock = new TBlock();
+        var TBlockDotRepresentation = new Object[][]{
+                {tBlock.dotAt(0, 0), 1, "Incorrect dotAt(0, 0)"},
+                {tBlock.dotAt(0, 1), 1, "Incorrect dotAt(0, 1)"},
+                {tBlock.dotAt(0, 2), 1, "Incorrect dotAt(0, 2)"},
+                {tBlock.dotAt(1, 0), 0, "Incorrect dotAt(1, 0)"},
+                {tBlock.dotAt(1, 1), 1, "Incorrect dotAt(1, 1)"},
+                {tBlock.dotAt(1, 2), 0, "Incorrect dotAt(1, 2)"},
+        };
+
+        YBlock yBlock = new YBlock();
+        var YBlockDotRepresentation = new Object[][]{
+                {yBlock.dotAt(0, 0), 1, "Incorrect dotAt(0, 0)"},
+                {yBlock.dotAt(0, 1), 0, "Incorrect dotAt(0, 1)"},
+                {yBlock.dotAt(0, 2), 1, "Incorrect dotAt(0, 2)"},
+                {yBlock.dotAt(1, 0), 0, "Incorrect dotAt(1, 0)"},
+                {yBlock.dotAt(1, 1), 1, "Incorrect dotAt(1, 1)"},
+                {yBlock.dotAt(1, 2), 0, "Incorrect dotAt(1, 2)"},
+                {yBlock.dotAt(2, 0), 0, "Incorrect dotAt(2, 0)"},
+                {yBlock.dotAt(2, 1), 1, "Incorrect dotAt(2, 1)"},
+                {yBlock.dotAt(2, 2), 0, "Incorrect dotAt(2, 2)"}
+        };
+
         return new Object[][]{
-                createTestHBlockObject(),
-                createTestIBlockObject(),
-                createTestOBlockObject(),
-                createTestTBlockObject(),
-                createTestYBlockObject()
+                {oBlock, "Tests for OBlock", 2, 2, oBlockDotRepresentation},
+                {tBlock, "Tests for TBlock", 2, 3, TBlockDotRepresentation},
+                {yBlock, "Tests for YBlock", 3, 3, YBlockDotRepresentation}
         };
-    }
-
-    @DataProvider
-    public Object[][] shapeDots() {
-        return shape;
-    }
-
-    private static Object[] createTestHBlockObject() {
-        var shape = new Object[][]{
-                createTestDotObject(0, 0, 1),
-                createTestDotObject(0, 1, 0),
-                createTestDotObject(0, 2, 1),
-                createTestDotObject(1, 0, 1),
-                createTestDotObject(1, 1, 1),
-                createTestDotObject(1, 2, 1),
-                createTestDotObject(2, 0, 1),
-                createTestDotObject(2, 1, 0),
-                createTestDotObject(2, 2, 1)
-        };
-        return createTestBlockObject(new HBlock(), 3, 3, shape);
-    }
-
-    private static Object[] createTestIBlockObject() {
-        var shape = new Object[][]{
-                createTestDotObject(0, 0, 1),
-                createTestDotObject(1, 0, 1),
-                createTestDotObject(2, 0, 1),
-                createTestDotObject(3, 0, 1)
-        };
-        return createTestBlockObject(new IBlock(), 4, 1, shape); 
-    }
-    
-    private static Object[] createTestOBlockObject() {
-        var shape = new Object[][]{
-                createTestDotObject(0, 0, 1),
-                createTestDotObject(0, 1, 1),
-                createTestDotObject(1, 0, 1),
-                createTestDotObject(1, 1, 1)
-        };
-        return createTestBlockObject(new OBlock(), 2, 2, shape);
-    }
-
-    private static Object[] createTestTBlockObject() {
-        var shape = new Object[][]{
-                createTestDotObject(0, 0, 1),
-                createTestDotObject(0, 1, 1),
-                createTestDotObject(0, 2, 1),
-                createTestDotObject(1, 0, 0),
-                createTestDotObject(1, 1, 1),
-                createTestDotObject(1, 2, 0)
-        };
-        return createTestBlockObject(new TBlock(), 2, 3, shape);
-    }
-
-    private static Object[] createTestYBlockObject() {
-        var shape = new Object[][]{
-                createTestDotObject(0, 0, 1),
-                createTestDotObject(0, 1, 0),
-                createTestDotObject(0, 2, 1),
-                createTestDotObject(1, 0, 0),
-                createTestDotObject(1, 1, 1),
-                createTestDotObject(1, 2, 0),
-                createTestDotObject(2, 0, 0),
-                createTestDotObject(2, 1, 1),
-                createTestDotObject(2, 2, 0)
-        };
-        return createTestBlockObject(new YBlock(), 3, 3, shape);
-    }
-
-    private static Object[] createTestDotObject(int i, int j, int expected) {
-        return new Object[]{i, j, expected};
-    }
-
-    private static Object[] createTestBlockObject(Block block, int rowsExpected, int colsExpected, Object[][] shape) {
-        return new Object[]{block, rowsExpected, colsExpected, shape};
-    }
-
-    public void numberOfEveryBlockShapeRowsAsExpected() {
-        assertEquals(block.rows(), rowsExpected,
-                String.format("Number of rows for %s is incorrect.", block.getClass().getSimpleName()));
-    }
-
-    public void numberOfEveryBlockShapeColsAsExpected() {
-        assertEquals(block.cols(), colsExpected,
-                String.format("Number of columns for %s is incorrect.", block.getClass().getSimpleName()));
-    }
-
-    @Test(dataProvider = "shapeDots")
-    public void blocksDotAtReturnsCorrectValue(int i, int j, int expected) {
-        assertEquals(block.dotAt(i, j), (byte) expected,
-                String.format("%s incorrect dotAt(%s, %s)", block.getClass().getSimpleName(), i, j));
     }
 }
