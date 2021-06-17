@@ -18,12 +18,12 @@ public class BlocksShapesTest {
 
     public void numberOfEveryBlockShapeRowsAsExpected() {
         assertEquals(rowsActual, rowsExpected, "Number of rows for " + testedBlock +
-                " is incorrect. Expected: " + rowsExpected + ", actual: " + rowsActual);
+                "is incorrect. Expected: " + rowsExpected + ", actual: " + rowsActual);
     }
 
     public void numberOfEveryBlockShapeColsAsExpected() {
         assertEquals(colsActual, colsExpected, "Number of cols for " + testedBlock +
-                " is incorrect. Expected: " + colsExpected + ", actual: " + colsActual);
+                "is incorrect. Expected: " + colsExpected + ", actual: " + colsActual);
     }
 
     @Test(dataProvider = "dotsRepresentation")
@@ -38,10 +38,10 @@ public class BlocksShapesTest {
     }
 
     @Factory(dataProvider = "blocks")
-    public BlocksShapesTest(Block block, String testedBlock, int rowsExpected, int colsExpected, Object[][] dotRepresentation) {
-        this.rowsActual = block.rows();
+    public BlocksShapesTest(String testedBlock, int rowsActual, int rowsExpected, int colsActual, int colsExpected, Object[][] dotRepresentation) {
+        this.rowsActual = rowsActual;
         this.rowsExpected = rowsExpected;
-        this.colsActual = block.cols();
+        this.colsActual = colsActual;
         this.colsExpected = colsExpected;
         this.testedBlock = testedBlock;
         this.dotRepresentation = dotRepresentation;
@@ -49,42 +49,53 @@ public class BlocksShapesTest {
 
     @DataProvider
     public static Object[][] blocks() {
-
         OBlock oBlock = new OBlock();
+        int actualRowsForOBlock = oBlock.rows();
+        int expectedRowsForOBlock = 2;
+        int actualColsForOBlock = oBlock.cols();
+        int expectedColsForOBlock = 2;
         var oBlockDotRepresentation = new Object[][]{
-                {oBlock.dotAt(0, 0), 1, " incorrect dotAt(0, 0)"},
-                {oBlock.dotAt(0, 1), 1, " incorrect dotAt(0, 1)"},
-                {oBlock.dotAt(1, 0), 1, " incorrect dotAt(1, 0)"},
-                {oBlock.dotAt(1, 1), 1, " incorrect dotAt(1, 1)"}
+                {oBlock.dotAt(0, 0), 1, "incorrect dotAt(0, 0)"},
+                {oBlock.dotAt(0, 1), 1, "incorrect dotAt(0, 1)"},
+                {oBlock.dotAt(1, 0), 1, "incorrect dotAt(1, 0)"},
+                {oBlock.dotAt(1, 1), 1, "incorrect dotAt(1, 1)"}
         };
 
         TBlock tBlock = new TBlock();
+        int actualRowsForTBlock = tBlock.rows();
+        int expectedRowsForTBlock = 2;
+        int actualColsForTBlock = tBlock.cols();
+        int expectedColsForTBlock = 3;
         var TBlockDotRepresentation = new Object[][]{
-                {tBlock.dotAt(0, 0), 1, "Incorrect dotAt(0, 0)"},
-                {tBlock.dotAt(0, 1), 1, "Incorrect dotAt(0, 1)"},
-                {tBlock.dotAt(0, 2), 1, "Incorrect dotAt(0, 2)"},
-                {tBlock.dotAt(1, 0), 0, "Incorrect dotAt(1, 0)"},
-                {tBlock.dotAt(1, 1), 1, "Incorrect dotAt(1, 1)"},
-                {tBlock.dotAt(1, 2), 0, "Incorrect dotAt(1, 2)"},
+                {tBlock.dotAt(0, 0), 1, "incorrect dotAt(0, 0)"},
+                {tBlock.dotAt(0, 1), 1, "incorrect dotAt(0, 1)"},
+                {tBlock.dotAt(0, 2), 1, "incorrect dotAt(0, 2)"},
+                {tBlock.dotAt(1, 0), 0, "incorrect dotAt(1, 0)"},
+                {tBlock.dotAt(1, 1), 1, "incorrect dotAt(1, 1)"},
+                {tBlock.dotAt(1, 2), 0, "incorrect dotAt(1, 2)"},
         };
 
         YBlock yBlock = new YBlock();
+        int actualRowsForYBlock = yBlock.rows();
+        int expectedRowsForYBlock = 3;
+        int actualColsForYBlock = tBlock.cols();
+        int expectedColsForYBlock = 3;
         var YBlockDotRepresentation = new Object[][]{
-                {yBlock.dotAt(0, 0), 1, "Incorrect dotAt(0, 0)"},
-                {yBlock.dotAt(0, 1), 0, "Incorrect dotAt(0, 1)"},
-                {yBlock.dotAt(0, 2), 1, "Incorrect dotAt(0, 2)"},
-                {yBlock.dotAt(1, 0), 0, "Incorrect dotAt(1, 0)"},
-                {yBlock.dotAt(1, 1), 1, "Incorrect dotAt(1, 1)"},
-                {yBlock.dotAt(1, 2), 0, "Incorrect dotAt(1, 2)"},
-                {yBlock.dotAt(2, 0), 0, "Incorrect dotAt(2, 0)"},
-                {yBlock.dotAt(2, 1), 1, "Incorrect dotAt(2, 1)"},
-                {yBlock.dotAt(2, 2), 0, "Incorrect dotAt(2, 2)"}
+                {yBlock.dotAt(0, 0), 1, "incorrect dotAt(0, 0)"},
+                {yBlock.dotAt(0, 1), 0, "incorrect dotAt(0, 1)"},
+                {yBlock.dotAt(0, 2), 1, "incorrect dotAt(0, 2)"},
+                {yBlock.dotAt(1, 0), 0, "incorrect dotAt(1, 0)"},
+                {yBlock.dotAt(1, 1), 1, "incorrect dotAt(1, 1)"},
+                {yBlock.dotAt(1, 2), 0, "incorrect dotAt(1, 2)"},
+                {yBlock.dotAt(2, 0), 0, "incorrect dotAt(2, 0)"},
+                {yBlock.dotAt(2, 1), 1, "incorrect dotAt(2, 1)"},
+                {yBlock.dotAt(2, 2), 0, "incorrect dotAt(2, 2)"}
         };
 
         return new Object[][]{
-                {oBlock, "Tests for OBlock", 2, 2, oBlockDotRepresentation},
-                {tBlock, "Tests for TBlock", 2, 3, TBlockDotRepresentation},
-                {yBlock, "Tests for YBlock", 3, 3, YBlockDotRepresentation}
+                {"Tests for OBlock ", actualRowsForOBlock, expectedRowsForOBlock, actualColsForOBlock, expectedColsForOBlock, oBlockDotRepresentation},
+                {"Tests for TBlock ", actualRowsForTBlock, expectedRowsForTBlock, actualColsForTBlock, expectedColsForTBlock, TBlockDotRepresentation},
+                {"Tests for YBlock ", actualRowsForYBlock, expectedRowsForYBlock, actualColsForYBlock, expectedColsForYBlock, YBlockDotRepresentation}
         };
     }
 }
