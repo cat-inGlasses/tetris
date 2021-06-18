@@ -11,10 +11,9 @@ public class BlockFeed {
             HBlock::new,
             IBlock::new,
             OBlock::new,
+            SBlock::new,
             TBlock::new,
-            YBlock::new,
-            IBlock::new,
-            SBlock::new
+            YBlock::new
     );
 
     public BlockFeed() {
@@ -23,4 +22,5 @@ public class BlockFeed {
     public Block nextBlock() {
         return blocks.get(rnd.nextInt(blocks.size())).get();
     }
+
 }
