@@ -17,7 +17,7 @@ import static org.testng.Assert.assertEquals;
  * @author Nikita Pochapynskyi
  */
 @Test(groups = "blockShapes")
-public class BlockShapesTest {
+public class BlocksShapesTest {
 
     /**
      * Template error message for <b>wrong ROWS</b>> quantity
