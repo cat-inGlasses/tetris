@@ -44,7 +44,8 @@ public class BlocksShapesTest {
         int actualRows = block.image.length;
 
         // assert
-        assertEquals(actualRows, expectedRows, String.format(ROW_QNT_MSG, block.getClass().getSimpleName(), expectedRows, actualRows));
+        assertEquals(actualRows, expectedRows,
+                String.format(ROW_QNT_MSG, block.getClass().getSimpleName(), expectedRows, actualRows));
     }
 
     @Test(dataProvider = "blocks")
@@ -57,7 +58,8 @@ public class BlocksShapesTest {
         int actualRows = block.image[0].length;
 
         // assert
-        assertEquals(actualRows, expectedRows, String.format(COL_QNT_MSG, block.getClass().getSimpleName(), expectedRows, actualRows));
+        assertEquals(actualRows, expectedRows,
+                String.format(COL_QNT_MSG, block.getClass().getSimpleName(), expectedRows, actualRows));
     }
 
     @Test(dataProvider = "dotAtDataPerBlock")
@@ -67,7 +69,8 @@ public class BlocksShapesTest {
         byte actualDot = block.dotAt(i, j);
 
         // assert
-        assertEquals(actualDot, expectedDot, String.format(DOT_MSG, block.getClass().getSimpleName(), i, j, expectedDot, actualDot));
+        assertEquals(actualDot, expectedDot,
+                String.format(DOT_MSG, block.getClass().getSimpleName(), i, j, expectedDot, actualDot));
     }
 
     @DataProvider
