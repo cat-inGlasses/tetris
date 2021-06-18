@@ -22,8 +22,6 @@
             </run>
         </groups>
         <classes>
-            <class name="com.epam.prejap.tetris.block.BlockShapesTest"/>
-            <class name="com.epam.prejap.tetris.block.BlocksShapesTest"/>
             <class name="com.epam.prejap.tetris.JARArchiveIT"/>
         </classes>
     </test>
