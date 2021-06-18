@@ -16,9 +16,14 @@
         <test.jar.file.location>
             ${project.build.directory}${file.separator}${project.build.finalName}.jar
         </test.jar.file.location>
-        <testng.version>7.4.0</testng.version>
+        <!--
+            Please use this naming convention for plugin and dependency versions: <artifactId.version>
+            Example: maven-jar-plugin -> maven.jar.plugin.version
+            Order of appearance: alphabetical
+        -->
         <maven.jar.plugin.version>3.2.0</maven.jar.plugin.version>
         <properties.maven.plugin.version>1.0.0</properties.maven.plugin.version>
+        <testng.version>7.4.0</testng.version>
     </properties>
 
     <dependencies>
