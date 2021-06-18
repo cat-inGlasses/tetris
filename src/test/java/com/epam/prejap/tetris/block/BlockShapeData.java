@@ -21,6 +21,19 @@ public class BlockShapeData {
             {new SBlock(), new byte[][]{
                     {0, 1, 1},
                     {1, 1, 0}
+            }},
+            {new OBlock(), new byte[][]{
+                    {1, 1},
+                    {1, 1}
+            }},
+            {new TBlock(), new byte[][]{
+                    {1, 1, 1},
+                    {0, 1, 0}
+            }},
+            {new YBlock(), new byte[][]{
+                    {1, 0, 1},
+                    {0, 1, 0},
+                    {0, 1, 0}
             }}
     };
 
