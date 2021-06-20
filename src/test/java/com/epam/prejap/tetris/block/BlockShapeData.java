@@ -21,7 +21,7 @@ public class BlockShapeData {
     private static final Map<Supplier<Block>, byte[][]> blocks = new LinkedHashMap<>();
 
     /**
-     * Holds mapping class to its ::new method reference
+     * Holds mapping class to its constructor reference
      * This was done, because of creating object from Block.class reference is more complicated
      */
     private static final Map<Class<? extends Block>, Supplier<Block>> classToSupp = new HashMap<>();
