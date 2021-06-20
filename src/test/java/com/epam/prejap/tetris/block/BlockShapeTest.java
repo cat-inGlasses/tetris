@@ -10,7 +10,7 @@ import static org.testng.Assert.assertEquals;
 
 /**
  * "Generic" test class, to test shapes.
- * Define shape object and its expected image in {@link BlockShapeData#blocks} array
+ * Define block class and its expected image in {@link BlockShapeData} class
  * and it will be tested automatically
  * <p>
  * Creation date: 18/06/2021
