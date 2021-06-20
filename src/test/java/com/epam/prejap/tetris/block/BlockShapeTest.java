@@ -36,17 +36,17 @@ public class BlockShapeTest {
 
     public void shouldBeRightQntOfRows() {
         assertEquals(block.rows(), image.length,
-                String.format("Number of rows for %s is incorrect.", block.getClass().getSimpleName()));
+                String.format("%s: number of rows for is incorrect.", block.getClass().getSimpleName()));
     }
 
     public void shouldBeRightQntOfColumns() {
         assertEquals(block.cols(), image[0].length,
-                String.format("Number of columns for %s is incorrect.", block.getClass().getSimpleName()));
+                String.format("%s: number of columns for is incorrect.", block.getClass().getSimpleName()));
     }
 
     @Test(dataProvider = "dotAtDataPerBlock")
     public void shouldReturnRightBytesFromDotAtMethod(int i, int j, byte expectedDot) {
         assertEquals(block.dotAt(i, j), expectedDot,
-                String.format("%s incorrect dotAt(%s, %s)", block.getClass().getSimpleName(), i, j));
+                String.format("%s: incorrect dotAt(%s, %s)", block.getClass().getSimpleName(), i, j));
     }
 }
