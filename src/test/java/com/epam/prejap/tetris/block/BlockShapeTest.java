@@ -30,7 +30,7 @@ public class BlockShapeTest {
     }
 
     @DataProvider
-    public Iterator<Object[]> dotAtDataPerBlock() {
+    public Iterator<Object[]> dotAtData() {
         return BlockShapeData.getDotAtDataFor(block.getClass());
     }
 
@@ -44,7 +44,7 @@ public class BlockShapeTest {
                 String.format("%s: number of columns for is incorrect.", block.getClass().getSimpleName()));
     }
 
-    @Test(dataProvider = "dotAtDataPerBlock", dependsOnMethods = {"shouldBeRightQntOfRows", "shouldBeRightQntOfColumns"})
+    @Test(dataProvider = "dotAtData", dependsOnMethods = {"shouldBeRightQntOfRows", "shouldBeRightQntOfColumns"})
     public void shouldReturnRightBytesFromDotAtMethod(int i, int j, byte expectedDot) {
         assertEquals(block.dotAt(i, j), expectedDot,
                 String.format("%s: incorrect dotAt(%s, %s)", block.getClass().getSimpleName(), i, j));
