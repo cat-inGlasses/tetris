@@ -3,7 +3,7 @@ package com.epam.prejap.tetris.block;
 /**
  * @author Nikita Pochapynskyi
  */
-public class SBlock extends Block {
+final class SBlock extends Block {
 
     /**
      * Byte array represents "S" block.
