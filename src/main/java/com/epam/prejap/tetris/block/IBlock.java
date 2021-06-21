@@ -8,6 +8,17 @@ package com.epam.prejap.tetris.block;
  * @see Block
  */
 class IBlock extends Block {
+
+    /**
+     * Byte array represents "S" block.
+     * In game will be displayed as (between lines):
+     *  -------------------
+     *       #
+     *       #
+     *       #
+     *       #
+     *  -------------------
+     */
     private static final byte [][] IMAGE = {
             {1},
             {1},
