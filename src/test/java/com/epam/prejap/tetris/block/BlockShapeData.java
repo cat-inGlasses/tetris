@@ -74,15 +74,12 @@ public class BlockShapeData {
     static Iterator<Object[]> getDotAtDataFor(Class<? extends Block> clazz) {
 
         List<Object[]> data = new LinkedList<>();
-
         byte[][] image = blocks.get(classToSupp.get(clazz));
-
         for (int i = 0; i < image.length; i++) {
             for (int j = 0; j < image[i].length; j++) {
                 data.add(new Object[]{i, j, image[i][j]});
             }
         }
-
         return data.iterator();
     }
 }
