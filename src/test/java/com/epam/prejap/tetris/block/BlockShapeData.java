@@ -17,40 +17,37 @@ public class BlockShapeData {
      * Contains block's constructor reference and its expected image for each block to be tested.
      * Feel free to add more shapes here (through static init block). They will be tested automatically.
      */
-    private static final Map<Supplier<Block>, byte[][]> blocks = new LinkedHashMap<>();
+    private static final Map<Supplier<Block>, byte[][]> blocks = new LinkedHashMap<>() {{
+        put(SBlock::new, new byte[][]{
+                {0, 1, 1},
+                {1, 1, 0}
+        });
+        put(OBlock::new, new byte[][]{
+                {1, 1},
+                {1, 1}
+        });
+        put(TBlock::new, new byte[][]{
+                {1, 1, 1},
+                {0, 1, 0}
+        });
+        put(YBlock::new, new byte[][]{
+                {1, 0, 1},
+                {0, 1, 0},
+                {0, 1, 0}
+        });
+        put(IBlock::new, new byte[][]{
+                {1},
+                {1},
+                {1},
+                {1}
+        });
+    }};
 
     /**
      * Mapping: block class to its constructor reference
      * This was done, because of creating object from Block.class reference is more complicated
      */
     private static final Map<Class<? extends Block>, Supplier<Block>> classToSupp = new HashMap<>();
-
-    // Add more shapes for testing here
-    static {
-        blocks.put(SBlock::new, new byte[][]{
-                {0, 1, 1},
-                {1, 1, 0}
-        });
-        blocks.put(OBlock::new, new byte[][]{
-                {1, 1},
-                {1, 1}
-        });
-        blocks.put(TBlock::new, new byte[][]{
-                {1, 1, 1},
-                {0, 1, 0}
-        });
-        blocks.put(YBlock::new, new byte[][]{
-                {1, 0, 1},
-                {0, 1, 0},
-                {0, 1, 0}
-        });
-        blocks.put(IBlock::new, new byte[][]{
-                {1},
-                {1},
-                {1},
-                {1}
-        });
-    }
 
     @DataProvider
     public static Iterator<Object[]> blocks() {
