@@ -6,6 +6,16 @@ package com.epam.prejap.tetris.block;
  * @author Slawomir Kucab
  */
 final class HBlock extends Block{
+
+    /**
+     * Byte array represents "S" block.
+     * In game will be displayed as (between lines):
+     *  -------------------
+     *       # #
+     *       ###
+     *       # #
+     *  -------------------
+     */
     private static final byte[][] IMAGE = {
             {1, 0, 1},
             {1, 1, 1},
