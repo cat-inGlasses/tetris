@@ -43,6 +43,12 @@ public class BlockShapeData {
                 {0, 1, 0},
                 {0, 1, 0}
         });
+        blocks.put(IBlock::new, new byte[][]{
+                {1},
+                {1},
+                {1},
+                {1}
+        });
     }
 
     @DataProvider
