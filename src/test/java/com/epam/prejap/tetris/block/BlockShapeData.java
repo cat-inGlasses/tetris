@@ -6,20 +6,21 @@ import java.util.*;
 import java.util.function.Supplier;
 
 /**
- * Class holds data of shapes that should be for each block class
+ * Class contains information about which image should each block class contains
+ * and generates data for testing
  *
  * @author Nikita Pochapynskyi
  */
 public class BlockShapeData {
 
     /**
-     * Holds block object to be tested and and its expected image.
+     * Contains block's constructor reference and its expected image for each block to be tested.
      * Feel free to add more shapes here (through static init block). They will be tested automatically.
      */
     private static final Map<Supplier<Block>, byte[][]> blocks = new LinkedHashMap<>();
 
     /**
-     * Holds mapping class to its constructor reference
+     * Mapping: block class to its constructor reference
      * This was done, because of creating object from Block.class reference is more complicated
      */
     private static final Map<Class<? extends Block>, Supplier<Block>> classToSupp = new HashMap<>();
