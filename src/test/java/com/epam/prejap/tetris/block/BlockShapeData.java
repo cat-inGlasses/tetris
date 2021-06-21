@@ -41,6 +41,11 @@ public class BlockShapeData {
                 {1},
                 {1}
         });
+        put(HBlock::new, new byte[][]{
+                {1, 0, 1},
+                {1, 1, 1},
+                {1, 0, 1}
+        });
     }};
 
     /**
