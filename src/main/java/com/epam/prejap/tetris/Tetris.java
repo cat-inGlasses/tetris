@@ -42,9 +42,11 @@ class Tetris {
     }
 
     public static void main(String[] args) {
-        int rows = 10;
-        int cols = 20;
-        int delay = 500;
+        Parameters parameters = new Parameters(args);
+        int rows = parameters.getRows();
+        int cols = parameters.getCols();
+        int delay = parameters.getDelay();
+
 
         var feed = new BlockFeed();
         var printer = new Printer(System.out);
