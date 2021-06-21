@@ -52,13 +52,11 @@ public class BlockShapeData {
     @DataProvider
     public static Iterator<Object[]> blocks() {
         List<Object[]> dpBlocks = new ArrayList<>(blocks.size());
-
         blocks.forEach((Supplier<Block> blockNewRef, byte[][] expectedImage) -> {
             Block blockToTest = blockNewRef.get();
             dpBlocks.add(new Object[]{blockToTest, expectedImage});
             classToSupp.put(blockToTest.getClass(), blockNewRef);
         });
-
         return dpBlocks.iterator();
     }
 
@@ -69,7 +67,6 @@ public class BlockShapeData {
      * @return {@link Iterator} with block object to be tested, coordinates of bytes and expected byte.
      */
     static Iterator<Object[]> getDotAtDataFor(Class<? extends Block> clazz) {
-
         List<Object[]> data = new LinkedList<>();
         byte[][] image = blocks.get(classToSupp.get(clazz));
         for (int i = 0; i < image.length; i++) {
