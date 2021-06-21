@@ -60,7 +60,6 @@ public class BlockShapeData {
         return dpBlocks.iterator();
     }
 
-
     /**
      * Generates expected data for {@link Block#dotAt(int, int)} method
      *
