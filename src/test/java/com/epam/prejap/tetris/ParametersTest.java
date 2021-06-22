@@ -6,9 +6,6 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-/**
- * @author Nikita Pochapynskyi
- */
 public class ParametersTest {
 
     @BeforeMethod
