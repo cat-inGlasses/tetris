@@ -45,8 +45,8 @@ public class Parameters {
 
             try {
                 var value = Integer.parseInt(cliValue.trim());
-                if (value < minValue) value = minValue;
-                if (value > maxValue) value = maxValue;
+                value = Math.max(value, minValue);
+                value = Math.min(value, maxValue);
                 actualValue = value;
             } catch (NumberFormatException ignored) {
                 actualValue = defaultValue;
