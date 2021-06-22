@@ -87,6 +87,15 @@ public class Parameters {
     public Parameters(String[] args) {
         setArgs(args);
         resetArgs();
+        informUser();
+    }
+
+    /**
+     * Inform user which parameters game will start with
+     */
+    private void informUser() {
+        var pattern = "The game will start with %d rows and %d columns and a delay of %d milliseconds" + System.lineSeparator();
+        System.out.format(pattern, Args.ROWS.value(), Args.COLS.value(), Args.DELAY.value());
     }
 
     /**
