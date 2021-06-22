@@ -1,17 +1,11 @@
 package com.epam.prejap.tetris;
 
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 public class ParametersTest {
-
-    @BeforeMethod
-    void resetState() {
-        Parameters.resetArgs();
-    }
 
     @Test(dataProvider = "cliParams")
     public void shouldSetParameters(String[] cliArgs, int expectedRows, int expectedCols, int expectedDelay) {
@@ -28,17 +22,17 @@ public class ParametersTest {
     @DataProvider
     public static Object[][] cliParams() {
         return new Object[][]{
-                {new String[]{"50", "50", "700"}, 50, 50, 700},
-                {new String[]{"20", "30", "500"}, 20, 30, 500},
-                {new String[]{"-1", "-1", "-1"}, 10, 10, 200},
-                {new String[]{"1000", "1000", "50000"}, 100, 100, 2000},
-                {new String[]{"1000"}, 100, 30, 500},
-                {new String[]{"5"}, 10, 30, 500},
-                {new String[]{"10", "-40"}, 10, 10, 500},
-                {new String[]{"7", "40"}, 10, 40, 500},
-                {new String[]{"10.5", "40.6", "499,99"}, 20, 30, 500},
+                {new String[]{"10", "10", "200"}, 10, 10, 200},
+                {new String[]{"9", "9", "199"}, 10, 10, 200},
+                {new String[]{"11", "11", "201"}, 11, 11, 201},
+                {new String[]{"99", "99", "1999"}, 99, 99, 1999},
+                {new String[]{"100", "100", "2000"}, 100, 100, 2000},
+                {new String[]{"101", "101", "2001"}, 100, 100, 2000},
                 {new String[]{"lorem ipsum", "lorem ipsum", "lorem ipsum"}, 20, 30, 500},
-                {new String[]{"10", "20", "30", "48"}, 10, 20, 200},
+                {new String[]{}, 20, 30, 500},
+                {new String[]{"10"}, 10, 30, 500},
+                {new String[]{"10", "10"}, 10, 10, 500},
+                {new String[]{"9", "9", "199", "48"}, 10, 10, 200},
         };
     }
 }

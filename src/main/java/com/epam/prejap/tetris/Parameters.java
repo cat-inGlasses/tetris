@@ -1,30 +1,11 @@
 package com.epam.prejap.tetris;
 
-import java.util.Arrays;
-
 /**
  * Takes CLI parameters and transforms them into expected values
  *
  * @author Nikita Pochapynskyi
  */
 public class Parameters {
-
-    /**
-     * reset args values. Only for testing
-     */
-    static void resetArgs() {
-        Args.reset();
-        for (int i = 0; i < Thread.currentThread().getStackTrace().length; i++) {
-            if (i == 2) {
-                String s = Thread.currentThread().getStackTrace()[i].toString();
-                if (s.matches("com\\.epam\\.prejap\\.tetris\\.ParametersTest\\.resetState.*")) {
-                    break;
-                } else {
-                    return;
-                }
-            }
-        }
-    }
 
     /**
      * Enum of input parameters that are used in program
@@ -43,10 +24,6 @@ public class Parameters {
             this.defaultValue = defValue;
             this.minValue = minValue;
             this.maxValue = maxValue;
-        }
-
-        static void reset() {
-            Arrays.stream(Args.values()).forEach(arg -> arg.actualValue = -1);
         }
 
         /**
@@ -86,7 +63,6 @@ public class Parameters {
      */
     public Parameters(String[] args) {
         setArgs(args);
-        resetArgs();
         informUser();
     }
 
