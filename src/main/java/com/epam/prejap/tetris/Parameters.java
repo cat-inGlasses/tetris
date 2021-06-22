@@ -3,7 +3,7 @@ package com.epam.prejap.tetris;
 import java.util.Arrays;
 
 /**
- * Takes cli parameters and transforms them into expected
+ * Takes CLI parameters and transforms them into expected values
  *
  * @author Nikita Pochapynskyi
  */
