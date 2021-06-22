@@ -1,45 +1,26 @@
 package com.epam.prejap.tetris;
 
-import org.testng.annotations.*;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
+import static com.github.stefanbirkner.systemlambda.SystemLambda.tapSystemOut;
 import static org.testng.Assert.assertEquals;
 
 @Test(groups = {"parameters", "console"})
 public class ParametersTest {
 
-    protected final PrintStream stdout = System.out;
-    protected final ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-
-    @BeforeClass
-    public void prepareOutStreamToBeTested() {
-        System.setOut(new PrintStream(outStream));
-    }
-
-    @BeforeMethod
-    public void resetOutStreamBeforeTestCall() {
-        outStream.reset();
-    }
-
-    @AfterClass
-    public void resetOutStreamForResultToBeDisplayed() {
-        System.setOut(stdout);
-    }
-
     @Test(dataProvider = "cliParams", groups = {"console"})
-    public void shouldProvideUserWithMessageAboutParameters(String[] cliArgs, int expectedRows, int expectedCols, int expectedDelay) {
+    public void shouldProvideUserWithMessageAboutParameters(String[] cliArgs, int expectedRows, int expectedCols, int expectedDelay) throws Exception {
 
         // arrange
         var pattern = "The game will start with %d rows and %d columns and a delay of %d milliseconds" + System.lineSeparator();
         String expectedScreen = String.format(pattern, expectedRows, expectedCols, expectedDelay);
 
         // act
-        new Parameters(cliArgs);
+        String actualScreen = tapSystemOut(() -> new Parameters(cliArgs));
 
         // assert
-        assertEquals(outStream.toString(), expectedScreen, "Wrong message for user!");
+        assertEquals(actualScreen, expectedScreen, "Wrong message for user!");
     }
 
     @Test(dataProvider = "cliParams", groups = {"parameters"})
