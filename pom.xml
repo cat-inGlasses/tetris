@@ -24,6 +24,7 @@
         -->
         <properties.maven.plugin.version>1.0.0</properties.maven.plugin.version>
         <jnativehook.version>2.0.2</jnativehook.version>
+        <systemlambda.version>1.2.0</systemlambda.version>
         <testng.version>7.4.0</testng.version>
         <maven.assembly.plugin.version>3.3.0</maven.assembly.plugin.version>
     </properties>
@@ -38,7 +39,7 @@
         <dependency>
             <groupId>com.github.stefanbirkner</groupId>
             <artifactId>system-lambda</artifactId>
-            <version>1.2.0</version>
+            <version>${systemlambda.version}</version>
             <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.1stleg/jnativehook -->
