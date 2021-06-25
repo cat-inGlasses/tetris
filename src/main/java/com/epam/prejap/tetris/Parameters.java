@@ -39,7 +39,7 @@ public class Parameters {
          * Sets actual value of parameter.
          * Corrects bad values if detects such
          *
-         * @param cliValue cli parameter's value
+         * @param cliValue CLI parameter's value
          */
         void setArg(String cliValue) {
 
@@ -55,11 +55,11 @@ public class Parameters {
     }
 
     /**
-     * Takes cli parameter and corrects them if needed.
+     * Takes CLI parameter and corrects them if needed.
      * If there is not enough parameters default will be applied
      * It there is mote parameters - extra will be ignored
      *
-     * @param args cli arguments
+     * @param args CLI arguments
      */
     public Parameters(String[] args) {
         setArgs(args);
@@ -77,7 +77,7 @@ public class Parameters {
     /**
      * Sets provided arguments
      *
-     * @param args array of cli arguments
+     * @param args array of CLI arguments
      */
     private void setArgs(String[] args) {
         for (Args arg : Args.values()) {
@@ -89,7 +89,7 @@ public class Parameters {
 
     /**
      * Returns value of <b>ROWS</b> parameter.
-     * It might be corrected if cli value was bad
+     * It might be corrected if CLI value was bad
      *
      * @return quantity of rows
      */
@@ -99,7 +99,7 @@ public class Parameters {
 
     /**
      * Returns value of <b>COLUMNS</b> parameter.
-     * It might be corrected if cli value was bad
+     * It might be corrected if CLI value was bad
      *
      * @return quantity of columns
      */
@@ -109,7 +109,7 @@ public class Parameters {
 
     /**
      * Returns value of <b>DELAY</b> parameter.
-     * It might be corrected if cli value was bad
+     * It might be corrected if CLI value was bad
      *
      * @return delay in ms
      */
