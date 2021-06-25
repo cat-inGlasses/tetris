@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.epam.prejap</groupId>
-    <artifactId>tetris</artifactId>
+    <artifactId>tetris</artifactId
     <version>0.14</version>
 
     <properties>
@@ -22,11 +22,12 @@
             Example: maven-jar-plugin -> maven.jar.plugin.version
             Order of appearance: alphabetical
         -->
-        <properties.maven.plugin.version>1.0.0</properties.maven.plugin.version>
         <jnativehook.version>2.0.2</jnativehook.version>
         <systemlambda.version>1.2.0</systemlambda.version>
         <testng.version>7.4.0</testng.version>
         <maven.assembly.plugin.version>3.3.0</maven.assembly.plugin.version>
+        <properties.maven.plugin.version>1.0.0</properties.maven.plugin.version>
+        <testng.version>7.4.0</testng.version>
     </properties>
 
     <dependencies>
