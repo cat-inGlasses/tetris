@@ -1,30 +1,11 @@
 package com.epam.prejap.tetris;
 
-import java.util.Arrays;
-
 /**
- * Takes cli parameters and transforms them into expected
+ * Takes CLI parameters and transforms them into expected values
  *
  * @author Nikita Pochapynskyi
  */
 public class Parameters {
-
-    /**
-     * reset args values. Only for testing
-     */
-    static void resetArgs() {
-        Args.reset();
-        for (int i = 0; i < Thread.currentThread().getStackTrace().length; i++) {
-            if (i == 2) {
-                String s = Thread.currentThread().getStackTrace()[i].toString();
-                if (s.matches("com\\.epam\\.prejap\\.tetris\\.ParametersTest\\.resetState.*")) {
-                    break;
-                } else {
-                    return;
-                }
-            }
-        }
-    }
 
     /**
      * Enum of input parameters that are used in program
@@ -45,10 +26,6 @@ public class Parameters {
             this.maxValue = maxValue;
         }
 
-        static void reset() {
-            Arrays.stream(Args.values()).forEach(arg -> arg.actualValue = -1);
-        }
-
         /**
          * If parameter was not set - return default value
          *
@@ -62,14 +39,14 @@ public class Parameters {
          * Sets actual value of parameter.
          * Corrects bad values if detects such
          *
-         * @param cliValue cli parameter's value
+         * @param cliValue CLI parameter's value
          */
         void setArg(String cliValue) {
 
             try {
                 var value = Integer.parseInt(cliValue.trim());
-                if (value < minValue) value = minValue;
-                if (value > maxValue) value = maxValue;
+                value = Math.max(value, minValue);
+                value = Math.min(value, maxValue);
                 actualValue = value;
             } catch (NumberFormatException ignored) {
                 actualValue = defaultValue;
@@ -78,21 +55,29 @@ public class Parameters {
     }
 
     /**
-     * Takes cli parameter and corrects them if needed.
+     * Takes CLI parameter and corrects them if needed.
      * If there is not enough parameters default will be applied
      * It there is mote parameters - extra will be ignored
      *
-     * @param args cli arguments
+     * @param args CLI arguments
      */
     public Parameters(String[] args) {
         setArgs(args);
-        resetArgs();
+        informUser();
+    }
+
+    /**
+     * Inform user which parameters game will start with
+     */
+    private void informUser() {
+        var pattern = "The game will start with %d rows and %d columns and a delay of %d milliseconds" + System.lineSeparator();
+        System.out.format(pattern, Args.ROWS.value(), Args.COLS.value(), Args.DELAY.value());
     }
 
     /**
      * Sets provided arguments
      *
-     * @param args array of cli arguments
+     * @param args array of CLI arguments
      */
     private void setArgs(String[] args) {
         for (Args arg : Args.values()) {
@@ -104,7 +89,7 @@ public class Parameters {
 
     /**
      * Returns value of <b>ROWS</b> parameter.
-     * It might be corrected if cli value was bad
+     * It might be corrected if CLI value was bad
      *
      * @return quantity of rows
      */
@@ -114,7 +99,7 @@ public class Parameters {
 
     /**
      * Returns value of <b>COLUMNS</b> parameter.
-     * It might be corrected if cli value was bad
+     * It might be corrected if CLI value was bad
      *
      * @return quantity of columns
      */
@@ -124,7 +109,7 @@ public class Parameters {
 
     /**
      * Returns value of <b>DELAY</b> parameter.
-     * It might be corrected if cli value was bad
+     * It might be corrected if CLI value was bad
      *
      * @return delay in ms
      */
